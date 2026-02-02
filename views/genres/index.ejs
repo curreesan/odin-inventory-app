@@ -12,7 +12,7 @@
     <ul>
       <% genres.forEach(genre => { %>
         <li>
-          <a href="/<%= genre.id %>">
+          <a href="/genres/<%= genre.id %>">
             <%= genre.name %>
           </a>
         </li>
@@ -22,6 +22,8 @@
     <p>No genres yet. Add some!</p>
   <% } %>
 
-  <p><a href="#">Add New Genre (coming soon)</a></p>
+  <p>
+    <a href="/genres/new">Add New Genre</a>
+  </p>
 </body>
 </html>

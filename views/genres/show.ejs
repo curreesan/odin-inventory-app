@@ -8,14 +8,13 @@
 <body>
   <h1><%= genre.name %> Games</h1>
 
-  <p><a href="/">← Back to all genres</a></p>
+  <p><a href="/genres">← Back to all genres</a></p>
 
   <% if (games && games.length > 0) { %>
     <ul>
       <% games.forEach(game => { %>
         <li>
           <%= game.name %> - <%= game.cost %>
-          <!-- We'll add edit/delete links later -->
         </li>
       <% }); %>
     </ul>
@@ -23,6 +22,16 @@
     <p>No games in this genre yet.</p>
   <% } %>
 
-  <p><a href="#">Add New Game to this genre (coming soon)</a></p>
+  <!-- Coming soon: Add Game link -->
+  <p>
+    <a href="#">Add New Game to this genre (coming soon)</a>
+  </p>
+
+  <!-- Coming soon: Delete button -->
+  <p>
+    <form action="/genres/<%= genre.id %>/delete" method="POST">
+      <button type="submit">Delete this Genre (and all its games)</button>
+    </form>
+  </p>
 </body>
 </html>
