@@ -16,6 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 const genresRouter = require("./routes/genres");
 
 app.use("/genres", genresRouter);
+app.use(express.static(path.join(__dirname, "public")));
 
 // Optional: Redirect root to genres list (so http://localhost:3000 goes to home)
 app.get("/", (req, res) => {

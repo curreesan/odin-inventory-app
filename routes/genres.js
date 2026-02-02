@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const genresController = require("../controllers/genresController");
+const gamesRouter = require("../routes/games");
+
+router.use("/:genreId/games", gamesRouter);
 
 // List all genres (home)
 router.get("/", genresController.getAllGenres);

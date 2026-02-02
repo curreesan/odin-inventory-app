@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
   <title><%= title %></title>
 </head>
 <body>
@@ -14,7 +15,23 @@
     <ul>
       <% games.forEach(game => { %>
         <li>
-          <%= game.name %> - <%= game.cost %>
+          <a href="/genres/<%= genre.id %>/games/<%= game.id %>">
+            <%= game.name %>
+          </a>
+          - <%= game.cost %>
+
+          <form 
+            action="/genres/<%= genre.id %>/games/<%= game.id %>/delete" 
+            method="POST" 
+            style="display:inline;"
+          >
+            <button 
+              type="submit" 
+              onclick="return confirm('Are you sure you want to delete <%= game.name %>?')"
+            >
+              Delete
+            </button>
+          </form>
         </li>
       <% }); %>
     </ul>
@@ -22,12 +39,10 @@
     <p>No games in this genre yet.</p>
   <% } %>
 
-  <!-- Coming soon: Add Game link -->
   <p>
-    <a href="#">Add New Game to this genre (coming soon)</a>
+    <a href="/genres/<%= genre.id %>/games/new">Add New Game to this genre</a>
   </p>
 
-  <!-- Coming soon: Delete button -->
   <p>
     <form action="/genres/<%= genre.id %>/delete" method="POST">
       <button type="submit">Delete this Genre (and all its games)</button>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <h1>Add New Game to <%= genre.name %></h1>
+
+    <form action="/genres/<%= genre.id %>/games" method="POST">
+      <div>
+        <label for="name">Game Name:</label>
+        <input type="text" id="name" name="name" required />
+      </div>
+
+      <div>
+        <label for="cost">Cost:</label>
+        <input
+          type="number"
+          id="cost"
+          name="cost"
+          step="0.01"
+          min="0"
+          required
+        />
+      </div>
+
+      <button type="submit">Create Game</button>
+    </form>
+
+    <p>
+      <a href="/genres/<%= genre.id %>">← Back to <%= genre.name %> games</a>
+    </p>
+  </body>
+</html>
