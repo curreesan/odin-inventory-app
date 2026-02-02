@@ -1,12 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title %></title>
-  </head>
-  <body>
-    <h1>Welcome to Game Inventory</h1>
-    <p>This will list genres soon...</p>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+</head>
+<body>
+  <h1>Game Inventory - Genres</h1>
+
+  <% if (genres && genres.length > 0) { %>
+    <ul>
+      <% genres.forEach(genre => { %>
+        <li>
+          <a href="/<%= genre.id %>">
+            <%= genre.name %>
+          </a>
+        </li>
+      <% }); %>
+    </ul>
+  <% } else { %>
+    <p>No genres yet. Add some!</p>
+  <% } %>
+
+  <p><a href="#">Add New Genre (coming soon)</a></p>
+</body>
 </html>

@@ -1,6 +1,7 @@
+require("dotenv").config();
 const express = require("express");
 const path = require("path");
-require("dotenv").config();
+const genresRouter = require("./routes/genres");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -14,10 +15,8 @@ app.use(express.urlencoded({ extended: true }));
 // Serve static files (CSS, images, etc.) later
 app.use(express.static(path.join(__dirname, "public")));
 
-// Temporary home route to test EJS
-app.get("/", (req, res) => {
-  res.render("index", { title: "Game Inventory" });
-});
+// Routes
+app.use("/", genresRouter); // Home page now shows genres
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
